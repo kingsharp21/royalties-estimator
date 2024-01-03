@@ -3,7 +3,7 @@ function Trending({img, header, para, artiseid}:any) {
     return ( 
         <Link to={`artise/${artiseid}`}>
             <div className="trending">
-                <img src={img} alt="artists-img" />
+                <img src={`${img}`} alt="artists-img" />
                 <div className="desc">
                     <h2>{header}</h2>
                     <p>{para}</p>

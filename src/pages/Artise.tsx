@@ -14,7 +14,11 @@ function Artise() {
     // const params= useParams();
     let { artiseId } = useParams();
     // params.artiseId
-    const[artise, setArtise] = useState<any[]>([])
+    const[artise, setArtise] = useState({
+        'name':'',
+        'followers':'',
+        'bg_img':''
+    })
 
     useEffect(()=>{
         let data = getArtise(artiseId)
@@ -23,13 +27,13 @@ function Artise() {
    
     return ( 
         <div className="content-wrapper">
-            <div className="artise-over-view" style={{ backgroundImage:`url("${thumb}")`  }}>
+            <div className="artise-over-view" style={{ backgroundImage:`url("${artise.bg_img}")`  }}>
                 <Link to={'/'}><ArrowBackIosIcon className="prev-icon"/></Link>
                 
                 <div className="desc">
                     <span className="handle-tag"><VerifiedIcon className="verified-icon"/>@theresaboyer</span>
                     <h1 className="artise-name">{artise.name}</h1>
-                    <p className="download-queries">425,855,704 monthly downloads</p>
+                    <p className="download-queries">{`${artise.followers} followers`}</p>
                 </div>
             </div>
 

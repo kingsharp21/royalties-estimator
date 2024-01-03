@@ -13,24 +13,26 @@ import { getArtises } from '../service/artiseService'
 const thumb =  require("../assets/img/avatar.avif")
 
 function HomePage(props:any) {
-    const[trends, setTrends] = useState([])
+    const[trends, setTrends] = useState<any[]>([])
 
     useEffect(() => {
         let data = getArtises()
-        data.then((result)=>{setTrends(result.data)})
-
+        data.then((result)=>{setTrends(result)})
       }, []);
     return ( 
         <div className="content-wrapper">
             <div className="greeting">
                 <h1>Good Evening, Kingsharp</h1>
                 <div className="label-preview">
-                    <Label img={thumb} text='kingsharp'/>
+                {trends.map((ele:any)=>{
+                    return <Label img={ele.md_img} text={ele.name}/>
+                })}
+                    {/* <Label img={thumb} text='kingsharp'/>
                     <Label img={thumb} text='nkansah'/>
                     <Label img={thumb} text='ampedu'/>
                     <Label img={thumb} text='kofi'/>
                     <Label img={thumb} text='zeddicus'/>
-                    <Label img={thumb} text='nana'/>
+                    <Label img={thumb} text='nana'/> */}
                 </div>
             </div>
 
@@ -39,7 +41,7 @@ function HomePage(props:any) {
 
                 <div className="trending-artists">
                     {trends.map((ele:any)=>{
-                        return <Trending img={thumb} header={ele.name} para={ele.gender} artiseid={ele.id}/>
+                        return <Trending img={ele.md_img} header={ele.name} para='Artist' artiseid={ele.id}/>
                     })}
                 </div>
                 
