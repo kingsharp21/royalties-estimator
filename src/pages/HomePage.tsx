@@ -15,9 +15,13 @@ const thumb =  require("../assets/img/avatar.avif")
 function HomePage(props:any) {
     const[trends, setTrends] = useState<any[]>([])
 
+    
+    
+
     useEffect(() => {
         let data = getArtises()
         data.then((result)=>{setTrends(result)})
+        // console.log(data);
       }, []);
     return ( 
         <div className="content-wrapper">

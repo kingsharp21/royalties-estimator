@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const baseURL = process.env.REACT_APP_BACKEND_URL;
+
 export async function  getArtises() {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/artise');
+        const response = await axios.get(`${baseURL}/api/artise`);
         return response.data;
       } catch (error) {
         return error;
@@ -11,7 +13,7 @@ export async function  getArtises() {
 
 export async function getArtise(id:any) {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/artise/${id}`)
+        const response = await axios.get(`${baseURL}/api/artise/${id}`)
     return response.data;
     } catch (error) {
         return error;
